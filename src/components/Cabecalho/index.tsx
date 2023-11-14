@@ -6,7 +6,7 @@ const CabecalhoEstilizado = styled.header`
     display:flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2em 4em
+    padding: 2em 2em
 `
 
 const Container = styled.div`
@@ -24,7 +24,7 @@ const LinkEstilizado = styled.a`
 function Cabecalho() {
     return (
         <CabecalhoEstilizado>
-            <img src={logo} alt="logo da empresa Voll" width="50" />
+            <img src={logo} alt="logo" width="50" />
             <Container>
                 <img src={perfil} alt="imagem de perfil do usuário" />
                 <LinkEstilizado href="#">Sair</LinkEstilizado>
