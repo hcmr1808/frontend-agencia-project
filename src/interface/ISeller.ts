@@ -1,5 +1,3 @@
-import { EmployeeData } from "./IEmployee";
-
 export interface SellerData{
     
     id?:number,

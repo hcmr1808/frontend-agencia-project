@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useSellerDataMutate } from '../../hooks/useSellerDataMutate';
 import { SellerData } from '../../interface/ISeller';
 import { FaTimes } from 'react-icons/fa';
-import './index.css'
+import { EmployeeData } from '../../interface/IEmployee';
+import { useDriverDataMutate } from '../../hooks/useDriverDataMutate';
+import { DriverData } from '../../interface/IDriver';
 import styled from 'styled-components';
 
 const StyledOverlay = styled.div`
@@ -84,6 +86,7 @@ const StyledCloseButton = styled.button`
     border: 2px;
 `
 
+
 interface InputProps {
     label: string,
     value: string | number,
@@ -94,7 +97,6 @@ interface ModalProps {
     closeModal(): void
 }
 
-
 const Input = ({ label, value, updateValue }: InputProps) => {
     return (
         <>
@@ -104,24 +106,24 @@ const Input = ({ label, value, updateValue }: InputProps) => {
     )
 }
 
-export function SellerModal({ closeModal }: ModalProps){
-    const [workload, setWorkload] = useState("");
+export function DriverModal({ closeModal }: ModalProps){
+    const [license_category, setLicenseCategory] = useState("");
     const [id] = useState(0);
-    const {mutate: sellerMutate, isSuccess, isLoading } = useSellerDataMutate();
+    const {mutate: driverMutate, isSuccess, isLoading } = useDriverDataMutate();
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
     const [birth_date, setBirth_date] = useState("");
 
-    const submitSeller = () => {
-        const sellerData: SellerData = {
+    const submitDriver = () => {
+        const driverData: DriverData = {
             id,
-            workload,
+            license_category,
             name,
             cpf,
             birth_date
         }
-        console.log('Submitting Seller Data:', sellerData);
-        sellerMutate(sellerData)
+        console.log('Submitting Driver Data:', driverData);
+        driverMutate(driverData)
     }
     
     useEffect(() => {
@@ -132,15 +134,15 @@ export function SellerModal({ closeModal }: ModalProps){
     return(
         <StyledOverlay>
             <StyledBody>
-                <StyledTitle>Cadastrar Vendedor</StyledTitle>
+                <StyledTitle>Cadastrar Motorista</StyledTitle>
                 <StyledInputContainer>
                     <Input label="Name" value={name} updateValue={setName}/>
                     <Input label="Cpf" value={cpf} updateValue={setCpf}/>
                     <Input label="Birth Date" value={birth_date} updateValue={setBirth_date}/>
-                    <Input label="Workload" value={workload} updateValue={setWorkload}/>
+                    <Input label="License Category" value={license_category} updateValue={setLicenseCategory}/>
                 </StyledInputContainer>
-                <StyledBtnSecondary onClick={submitSeller} className="btn-secondary">
-                    {isLoading ? 'postando...' : 'CONFIRMAR'}
+                <StyledBtnSecondary onClick={submitDriver} className="btn-secondary">
+                    {isLoading ? 'postando...' : 'postar'}
                 </StyledBtnSecondary>
                 <StyledCloseButton className="close-button" onClick={closeModal}>
                 <FaTimes />
