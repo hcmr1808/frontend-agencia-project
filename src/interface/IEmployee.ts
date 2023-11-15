@@ -1,6 +1,6 @@
 export interface EmployeeData {
 
-    id:number,
+    id?:number,
     name: string,
     birth_date: string,
     cpf: string
