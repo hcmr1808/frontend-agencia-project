@@ -3,6 +3,8 @@ import { useSellerDataMutate } from '../../hooks/useSellerDataMutate';
 import { SellerData } from '../../interface/ISeller';
 import { FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
+import { useAccommodationDataMutate } from '../../hooks/useAccommodationDataMutate';
+import { AccommodationData } from '../../interface/IAccommodation';
 
 const StyledOverlay = styled.div`
     position: fixed;
@@ -103,24 +105,26 @@ const Input = ({ label, value, updateValue }: InputProps) => {
     )
 }
 
-export function SellerModal({ closeModal }: ModalProps){
-    const [workload, setWorkload] = useState("");
+export function AccommodationModal({ closeModal }: ModalProps){
     const [id] = useState(0);
-    const {mutate: sellerMutate, isSuccess, isLoading } = useSellerDataMutate();
+    const {mutate, isSuccess, isLoading } = useAccommodationDataMutate();
     const [name, setName] = useState("");
-    const [cpf, setCpf] = useState("");
-    const [birth_date, setBirth_date] = useState("");
+    const [street, setStreet] = useState("");
+    const [district, setDistrict] = useState("");
+    const [number, setNumber] = useState(0);
+    const [image, setImage] = useState("");
 
-    const submitSeller = () => {
-        const sellerData: SellerData = {
+    const submit = () => {
+        const accomodationData: AccommodationData = {
             id,
-            workload,
             name,
-            cpf,
-            birth_date
+            street,
+            district,
+            number,
+            image
         }
-        console.log('Submitting Seller Data:', sellerData);
-        sellerMutate(sellerData)
+        console.log('Submitting Accommodation Data:', accomodationData);
+        mutate(accomodationData)
     }
     
     useEffect(() => {
@@ -131,15 +135,16 @@ export function SellerModal({ closeModal }: ModalProps){
     return(
         <StyledOverlay>
             <StyledBody>
-                <StyledTitle>Cadastrar Vendedor</StyledTitle>
+                <StyledTitle>Cadastrar Hospedagem</StyledTitle>
                 <StyledInputContainer>
                     <Input label="Name" value={name} updateValue={setName}/>
-                    <Input label="Cpf" value={cpf} updateValue={setCpf}/>
-                    <Input label="Birth Date" value={birth_date} updateValue={setBirth_date}/>
-                    <Input label="Workload" value={workload} updateValue={setWorkload}/>
+                    <Input label="Street" value={street} updateValue={setStreet}/>
+                    <Input label="District" value={district} updateValue={setDistrict}/>
+                    <Input label="Number" value={number} updateValue={setNumber}/>
+                    <Input label="Image" value={image} updateValue={setImage}/>
                 </StyledInputContainer>
-                <StyledBtnSecondary onClick={submitSeller} className="btn-secondary">
-                    {isLoading ? 'postando...' : 'CONFIRMAR'}
+                <StyledBtnSecondary onClick={submit} className="btn-secondary">
+                    {isLoading ? 'postando...' : 'POSTAR'}
                 </StyledBtnSecondary>
                 <StyledCloseButton className="close-button" onClick={closeModal}>
                 <FaTimes />

@@ -3,6 +3,8 @@ import { useSellerDataMutate } from '../../hooks/useSellerDataMutate';
 import { SellerData } from '../../interface/ISeller';
 import { FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
+import { ClientData } from '../../interface/IClient';
+import { useClientDataMutate } from '../../hooks/useClientDataMutate';
 
 const StyledOverlay = styled.div`
     position: fixed;
@@ -103,24 +105,22 @@ const Input = ({ label, value, updateValue }: InputProps) => {
     )
 }
 
-export function SellerModal({ closeModal }: ModalProps){
-    const [workload, setWorkload] = useState("");
-    const [id] = useState(0);
-    const {mutate: sellerMutate, isSuccess, isLoading } = useSellerDataMutate();
+export function ClientModal({ closeModal }: ModalProps){
+    const {mutate, isSuccess, isLoading } = useClientDataMutate();
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
-    const [birth_date, setBirth_date] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone_number, setPhone_number] = useState("");
 
-    const submitSeller = () => {
-        const sellerData: SellerData = {
-            id,
-            workload,
-            name,
+    const submit = () => {
+        const clientData: ClientData = {
             cpf,
-            birth_date
+            name,
+            email,
+            phone_number
         }
-        console.log('Submitting Seller Data:', sellerData);
-        sellerMutate(sellerData)
+        console.log('Submitting Client Data:', clientData);
+        mutate(clientData)
     }
     
     useEffect(() => {
@@ -131,14 +131,14 @@ export function SellerModal({ closeModal }: ModalProps){
     return(
         <StyledOverlay>
             <StyledBody>
-                <StyledTitle>Cadastrar Vendedor</StyledTitle>
+                <StyledTitle>Cadastrar Client</StyledTitle>
                 <StyledInputContainer>
-                    <Input label="Name" value={name} updateValue={setName}/>
                     <Input label="Cpf" value={cpf} updateValue={setCpf}/>
-                    <Input label="Birth Date" value={birth_date} updateValue={setBirth_date}/>
-                    <Input label="Workload" value={workload} updateValue={setWorkload}/>
+                    <Input label="Email" value={email} updateValue={setEmail}/>
+                    <Input label="Name" value={name} updateValue={setName}/>
+                    <Input label="Phone Number" value={phone_number} updateValue={setPhone_number}/>
                 </StyledInputContainer>
-                <StyledBtnSecondary onClick={submitSeller} className="btn-secondary">
+                <StyledBtnSecondary onClick={submit} className="btn-secondary">
                     {isLoading ? 'postando...' : 'CONFIRMAR'}
                 </StyledBtnSecondary>
                 <StyledCloseButton className="close-button" onClick={closeModal}>

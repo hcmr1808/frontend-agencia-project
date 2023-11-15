@@ -3,6 +3,10 @@ import { useSellerDataMutate } from '../../hooks/useSellerDataMutate';
 import { SellerData } from '../../interface/ISeller';
 import { FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
+import { useAccommodationDataMutate } from '../../hooks/useAccommodationDataMutate';
+import { AccommodationData } from '../../interface/IAccommodation';
+import { usePackageAccommodationDataMutate } from '../../hooks/usePackageAccommodationDataMutate';
+import { PackageAccommodationData } from '../../interface/IPackageAccommodation';
 
 const StyledOverlay = styled.div`
     position: fixed;
@@ -22,7 +26,7 @@ const StyledOverlay = styled.div`
 const StyledBody = styled.div`
     background-color: white;
     padding: 24px;
-    height: 80%;
+    height: 50%;
     width: 60%;
     border-radius: 24px;
 
@@ -73,12 +77,13 @@ const StyledBtnSecondary = styled.button`
 
 const StyledCloseButton = styled.button`
     position: absolute;
-    top: 70px; 
+    top: 140px; 
     left: 950px;
     width: 40px; 
     height: 40px; 
     border-radius: 10px;
-    background-color: red;
+    background-color: Blue;
+    color: white;
     margin: 1%;
     border: 2px;
 `
@@ -103,24 +108,22 @@ const Input = ({ label, value, updateValue }: InputProps) => {
     )
 }
 
-export function SellerModal({ closeModal }: ModalProps){
-    const [workload, setWorkload] = useState("");
-    const [id] = useState(0);
-    const {mutate: sellerMutate, isSuccess, isLoading } = useSellerDataMutate();
+export function PackageAccommodationModal({ closeModal }: ModalProps){
+    const {mutate, isSuccess, isLoading } = usePackageAccommodationDataMutate();
+    const [id_package, setId_package] = useState(0);
+    const [id_accommodation, setId_accommodation] = useState(0);
     const [name, setName] = useState("");
-    const [cpf, setCpf] = useState("");
-    const [birth_date, setBirth_date] = useState("");
+    const [title, setTitle] = useState("");
 
-    const submitSeller = () => {
-        const sellerData: SellerData = {
-            id,
-            workload,
-            name,
-            cpf,
-            birth_date
+    const submit = () => {
+        const packageAccomodationData: PackageAccommodationData = {
+            id_package,
+            title,
+            id_accommodation,
+            name
         }
-        console.log('Submitting Seller Data:', sellerData);
-        sellerMutate(sellerData)
+        console.log('Submitting PackageAccommodation Data:', packageAccomodationData);
+        mutate(packageAccomodationData)
     }
     
     useEffect(() => {
@@ -131,14 +134,12 @@ export function SellerModal({ closeModal }: ModalProps){
     return(
         <StyledOverlay>
             <StyledBody>
-                <StyledTitle>Cadastrar Vendedor</StyledTitle>
+                <StyledTitle>Pacote Hospedagem</StyledTitle>
                 <StyledInputContainer>
-                    <Input label="Name" value={name} updateValue={setName}/>
-                    <Input label="Cpf" value={cpf} updateValue={setCpf}/>
-                    <Input label="Birth Date" value={birth_date} updateValue={setBirth_date}/>
-                    <Input label="Workload" value={workload} updateValue={setWorkload}/>
+                    <Input label="Id Pacote" value={id_package} updateValue={setId_package}/>
+                    <Input label="Id Hospedagem" value={id_accommodation} updateValue={setId_accommodation}/>
                 </StyledInputContainer>
-                <StyledBtnSecondary onClick={submitSeller} className="btn-secondary">
+                <StyledBtnSecondary onClick={submit} className="btn-secondary">
                     {isLoading ? 'postando...' : 'CONFIRMAR'}
                 </StyledBtnSecondary>
                 <StyledCloseButton className="close-button" onClick={closeModal}>

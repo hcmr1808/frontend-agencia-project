@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { SellerModal } from '../Seller-modal';
 import { DriverModal } from '../Driver-modal';
+import { ClientModal } from '../Client-modal';
 
 interface Props {
     imagem?: string,
@@ -41,29 +42,14 @@ flex-grow: .1;
 margin-left: 80px; 
 `
 
-function Titulo({imagem, children} : Props) {
+function TituloTicket({imagem, children} : Props) {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isModalOpen2, setIsModalOpen2] = useState(false);
-
-
-    const handleOpenModal = () => {
-        setIsModalOpen(prev => !prev)
-      }
-    
-    const handleOpenModal2 = () => {
-        setIsModalOpen2(prev => !prev)
-    }
 
     return (
         <ContainerEstilizado>
                         <TituloEstilizado>{children}</TituloEstilizado>
-                        {isModalOpen && <SellerModal closeModal={handleOpenModal}/>}
-                        <StyledButton onClick={handleOpenModal}><span>Cadastrar Vendedor</span></StyledButton>
-                        {isModalOpen2 && <DriverModal closeModal={handleOpenModal2}/>}
-                        <StyledButton onClick={handleOpenModal2}><span>Cadastrar Motorista</span></StyledButton>
         </ContainerEstilizado>
     )
 }
 
-export default Titulo;
+export default TituloTicket;

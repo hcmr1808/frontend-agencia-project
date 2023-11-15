@@ -21,11 +21,19 @@ export const Header = () => {
           <NavLink to="/packages">Packages</NavLink>
         </li>
         <li>
+          <NavLink to="/accommodations">Accommodations</NavLink>
+        </li>
+        <li>
           <NavLink to="/employees">Employees</NavLink>
         </li>
         <li>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/clients">Clients</NavLink>
         </li>
+        <li>
+          <NavLink to="/Admin">Admin</NavLink>
+        </li>
+        
+        
       </ul>
     </nav>
   );
