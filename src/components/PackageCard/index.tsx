@@ -18,19 +18,25 @@ const StyleImgCard = styled.img`
 
 
 interface CardProps {
+    id_package:number,
     price: number,
     title: string,
     image: string,
-    description: string
+    description: string,
+    id_accommodation: number,
+    name : string
+
 }
 
-export function Card({ price, image, title, description } : CardProps){
+export function Card({ id_package,price, image, title, description, id_accommodation, name } : CardProps){
     return(
         <StyledCard>
             <StyleImgCard src={image}/>
+            <p><b>Id:</b>{id_package}</p>
             <h2>{title}</h2>
             <p>{description}</p>
             <p><b>Valor:</b>{price}</p>
+        
         </StyledCard>
     )
 }

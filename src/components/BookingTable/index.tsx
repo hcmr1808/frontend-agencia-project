@@ -7,6 +7,8 @@ import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import { EmployeeData } from "../../interface/IEmployee"
 import styled from "@emotion/styled";
+import { ClientData } from "../../interface/IClient";
+import { BookingData } from "../../interface/IBooking";
 
 const StyledCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`] : {
@@ -29,8 +31,8 @@ const StyledRow = styled(TableRow)(() => ({
 }))
 
 
-function Tabela({employees} : {employees ?: EmployeeData[] | null }) {
-    console.log("Dados recebidos no componente Tabela:", employees);
+function TabelaBooking({bookings} : {bookings ?: BookingData[] | null }) {
+    console.log("Dados recebidos no componente Tabela:", bookings);
 
     return (
         <>
@@ -38,20 +40,27 @@ function Tabela({employees} : {employees ?: EmployeeData[] | null }) {
                 <Table sx={{ minWidth: 700 }} aria-label="tabela-customizada">
                     <TableHead>
                         <StyledRow>
-                                <StyledCell>Id</StyledCell>
-                                <StyledCell>Nome</StyledCell>
-                                <StyledCell>Cpf</StyledCell>                                    
-                                <StyledCell>Data de Nascimento</StyledCell>
+                                <StyledCell>Id Pacote</StyledCell>
+                                <StyledCell>Nome Pacote</StyledCell>
+                                <StyledCell>Id Vendedor</StyledCell>
+                                <StyledCell>Nome Vendedor</StyledCell>                                    
+                                <StyledCell>Id Cliente</StyledCell>
+                                <StyledCell>Nome Cliente</StyledCell>
+                                <StyledCell>Id Passagem</StyledCell>
                         </StyledRow>
                     </TableHead>
                                         <TableBody>
-                                            {employees?.map((linha) => {
+                                            {bookings?.map((linha) => {
                                                 return(
-                                                <TableRow key={linha.id_employee}>
+                                                <TableRow key={linha.id_package}>
+                                                    <TableCell>{linha.id_package}</TableCell>
+                                                    <TableCell>{linha.title}</TableCell>
                                                     <TableCell>{linha.id_employee}</TableCell>
                                                     <TableCell>{linha.name}</TableCell>
-                                                    <TableCell>{linha.cpf}</TableCell>
-                                                    <TableCell component="th" scope="row">{linha.birth_date}</TableCell>
+                                                    <TableCell>{linha.id_client}</TableCell>
+                                                    <TableCell>{linha.name_client}</TableCell>
+                                                    <TableCell>{linha.id_ticket}</TableCell>
+
                                                 </TableRow>
                                                 )       
                                             })}
@@ -63,4 +72,4 @@ function Tabela({employees} : {employees ?: EmployeeData[] | null }) {
     )
 }
 
-export default Tabela;
+export default TabelaBooking;

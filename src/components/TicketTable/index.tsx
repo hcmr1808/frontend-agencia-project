@@ -5,8 +5,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
-import { EmployeeData } from "../../interface/IEmployee"
 import styled from "@emotion/styled";
+import { TicketData } from "../../interface/ITicket";
 
 const StyledCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`] : {
@@ -29,8 +29,8 @@ const StyledRow = styled(TableRow)(() => ({
 }))
 
 
-function Tabela({employees} : {employees ?: EmployeeData[] | null }) {
-    console.log("Dados recebidos no componente Tabela:", employees);
+function TabelaTicket({tickets} : {tickets ?: TicketData[] | null }) {
+    console.log("Dados recebidos no componente Tabela:", tickets);
 
     return (
         <>
@@ -39,19 +39,17 @@ function Tabela({employees} : {employees ?: EmployeeData[] | null }) {
                     <TableHead>
                         <StyledRow>
                                 <StyledCell>Id</StyledCell>
-                                <StyledCell>Nome</StyledCell>
-                                <StyledCell>Cpf</StyledCell>                                    
-                                <StyledCell>Data de Nascimento</StyledCell>
+                                <StyledCell>Preço</StyledCell>
+                                <StyledCell>Data</StyledCell>                                    
                         </StyledRow>
                     </TableHead>
                                         <TableBody>
-                                            {employees?.map((linha) => {
+                                            {tickets?.map((linha) => {
                                                 return(
-                                                <TableRow key={linha.id_employee}>
-                                                    <TableCell>{linha.id_employee}</TableCell>
-                                                    <TableCell>{linha.name}</TableCell>
-                                                    <TableCell>{linha.cpf}</TableCell>
-                                                    <TableCell component="th" scope="row">{linha.birth_date}</TableCell>
+                                                <TableRow key={linha.id_ticket}>
+                                                    <TableCell>{linha.id_ticket}</TableCell>
+                                                    <TableCell>{linha.price}</TableCell>
+                                                    <TableCell>{linha.date}</TableCell>
                                                 </TableRow>
                                                 )       
                                             })}
@@ -63,4 +61,4 @@ function Tabela({employees} : {employees ?: EmployeeData[] | null }) {
     )
 }
 
-export default Tabela;
+export default TabelaTicket;

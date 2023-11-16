@@ -1,8 +1,10 @@
 export interface PackageData {
-    id?:number,
+    id_package:number,
     title:string,
     image:string,
     description:string,
-    price:number
+    price:number,
+    id_accommodation: number,
+    name: string
 
 }

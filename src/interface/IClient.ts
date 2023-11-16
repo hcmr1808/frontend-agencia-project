@@ -1,6 +1,6 @@
 export interface ClientData{
 
-    id?:number,
+    id_client?:number,
     cpf:string,
     email:string,
     name:string,

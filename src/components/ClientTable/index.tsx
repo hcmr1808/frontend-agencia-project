@@ -49,8 +49,8 @@ function TabelaClient({clients} : {clients ?: ClientData[] | null }) {
                                         <TableBody>
                                             {clients?.map((linha) => {
                                                 return(
-                                                <TableRow key={linha.id}>
-                                                    <TableCell>{linha.id}</TableCell>
+                                                <TableRow key={linha.id_client}>
+                                                    <TableCell>{linha.id_client}</TableCell>
                                                     <TableCell>{linha.name}</TableCell>
                                                     <TableCell>{linha.cpf}</TableCell>
                                                     <TableCell>{linha.email}</TableCell>

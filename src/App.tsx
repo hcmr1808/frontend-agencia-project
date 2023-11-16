@@ -7,6 +7,7 @@ import { Header } from './components/Header';
 import Clients from './pages/clients';
 import Admin from './pages/admin';
 import Accommodations from './pages/accommodations';
+import Tickets from './pages/tickets';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/employees" element={<Employees/>}/>
           <Route path="/clients" element={<Clients/>}/>
           <Route path="/admin" element={<Admin/>}/>
+          <Route path="/tickets" element={<Tickets/>}/>
         </Routes>
     </BrowserRouter>
   )

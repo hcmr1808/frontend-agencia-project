@@ -19,10 +19,13 @@ const [isModalOpen, setIsModalOpen] = useState(false);
     <div className="card-grid">
       {data?.map(packageData => 
         <Card
+          id_package={packageData.id_package}
           price={packageData.price} 
           title={packageData.title} 
           image={packageData.image}
           description={packageData.description}
+          name={packageData.name}
+          id_accommodation={packageData.id_accommodation}
         />
       )}
     </div>
