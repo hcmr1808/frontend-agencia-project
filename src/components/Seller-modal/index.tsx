@@ -105,19 +105,22 @@ const Input = ({ label, value, updateValue }: InputProps) => {
 
 export function SellerModal({ closeModal }: ModalProps){
     const [workload, setWorkload] = useState("");
-    const [id] = useState(0);
+    const [id_employee] = useState(0);
+    const [id_supervisor, setId_supervisor] = useState(0);
     const {mutate: sellerMutate, isSuccess, isLoading } = useSellerDataMutate();
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
     const [birth_date, setBirth_date] = useState("");
 
+
     const submitSeller = () => {
         const sellerData: SellerData = {
-            id,
+            id_employee,
             workload,
             name,
             cpf,
-            birth_date
+            birth_date,
+            id_supervisor
         }
         console.log('Submitting Seller Data:', sellerData);
         sellerMutate(sellerData)

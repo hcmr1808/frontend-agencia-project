@@ -8,6 +8,7 @@ import Clients from './pages/clients';
 import Admin from './pages/admin';
 import Accommodations from './pages/accommodations';
 import Tickets from './pages/tickets';
+import Consults from './pages/consults';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/clients" element={<Clients/>}/>
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/tickets" element={<Tickets/>}/>
+          <Route path="/consults" element={<Consults/>}/>
         </Routes>
     </BrowserRouter>
   )
