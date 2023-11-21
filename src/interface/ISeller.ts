@@ -1,6 +1,6 @@
 export interface SellerData{
     
-    id_employee:number,
+    id_seller:number,
     workload:string,
     name: string,
     birth_date: string,

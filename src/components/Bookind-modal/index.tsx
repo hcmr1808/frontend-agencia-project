@@ -111,21 +111,17 @@ export function BookingModal({ closeModal }: ModalProps){
     const {mutate, isSuccess, isLoading } = useBookingDataMutate();
     const [id_package, setId_package] = useState(0);
     const [id_client, setId_client] = useState(0);
-    const [id_employee, setId_employee] = useState(0);
+    const [id_seller, setId_seller] = useState(0);
     const [id_ticket, setId_ticket] = useState(0);
-    const [name_client, setName_client] = useState("");
-    const [title, setTitle] = useState("");
-    const[name, setName] = useState("");
+   
 
     const submit = () => {
         const bookingData: BookingData = {
             id_package,
-            name,
             id_client,
-            id_employee,
+            id_seller,
             id_ticket,
-            name_client,
-            title
+           
         }
         console.log('Submitting Booking Data:', bookingData);
         mutate(bookingData)
@@ -142,7 +138,7 @@ export function BookingModal({ closeModal }: ModalProps){
                 <StyledTitle>Cadastrar Reserva</StyledTitle>
                 <StyledInputContainer>
                     <Input label="Id Pacote" value={id_package} updateValue={setId_package}/>
-                    <Input label="Id Vendedor" value={id_employee} updateValue={setId_employee}/>
+                    <Input label="Id Vendedor" value={id_seller} updateValue={setId_seller}/>
                     <Input label="Id Cliente" value={id_client} updateValue={setId_client}/>
                     <Input label="Id passagem" value={id_ticket} updateValue={setId_ticket}/>
                 </StyledInputContainer>

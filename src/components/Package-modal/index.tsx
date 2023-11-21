@@ -30,10 +30,16 @@ export function CreateModal({ closeModal }: ModalProps){
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
     const [description, setDescription] = useState("");
+    const [id_accommodation, setId_accommodation] = useState(0);
+    const [id_package, setId_package] = useState(0);
+    const [name, setName] = useState("");
     const { mutate, isSuccess, isLoading } = usePackageDataMutate();
 
     const submit = () => {
         const packageData: PackageData = {
+            id_accommodation,
+            name,
+            id_package,
             title, 
             price,
             description,

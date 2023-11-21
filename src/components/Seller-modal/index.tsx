@@ -3,6 +3,7 @@ import { useSellerDataMutate } from '../../hooks/useSellerDataMutate';
 import { SellerData } from '../../interface/ISeller';
 import { FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
+import { EmployeeData } from '../../interface/IEmployee';
 
 const StyledOverlay = styled.div`
     position: fixed;
@@ -104,9 +105,7 @@ const Input = ({ label, value, updateValue }: InputProps) => {
 }
 
 export function SellerModal({ closeModal }: ModalProps){
-    const [workload, setWorkload] = useState("");
-    const [id_employee] = useState(0);
-    const [id_supervisor, setId_supervisor] = useState(0);
+    const [workload, setWorkload] = useState(0);
     const {mutate: sellerMutate, isSuccess, isLoading } = useSellerDataMutate();
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
@@ -114,13 +113,12 @@ export function SellerModal({ closeModal }: ModalProps){
 
 
     const submitSeller = () => {
-        const sellerData: SellerData = {
-            id_employee,
-            workload,
+        const sellerData: EmployeeData = {
+        
             name,
             cpf,
             birth_date,
-            id_supervisor
+            workload: Number(workload)
         }
         console.log('Submitting Seller Data:', sellerData);
         sellerMutate(sellerData)

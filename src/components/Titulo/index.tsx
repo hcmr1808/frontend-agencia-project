@@ -10,15 +10,14 @@ interface Props {
 
 
 const SpanEstilizado = styled.span<Props>`
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-width: 25px;
-height: 25px;
+font-family: Arial, Helvetica, sans-serif;
+
 `
 
 const TituloEstilizado = styled.h2`
  color: var(--azul-escuro);
+ font-family: Arial, Helvetica, sans-serif;
+
 `
 
 const ContainerEstilizado = styled.div`
@@ -39,6 +38,7 @@ background-size: cover;
 justify-content: space-around;
 flex-grow: .1;
 margin-left: 80px; 
+
 `
 
 function Titulo({imagem, children} : Props) {
@@ -61,7 +61,7 @@ function Titulo({imagem, children} : Props) {
                         {isModalOpen && <SellerModal closeModal={handleOpenModal}/>}
                         <StyledButton onClick={handleOpenModal}><span>Cadastrar Vendedor</span></StyledButton>
                         {isModalOpen2 && <DriverModal closeModal={handleOpenModal2}/>}
-                        <StyledButton onClick={handleOpenModal2}><span>Cadastrar Motorista</span></StyledButton>
+                        <StyledButton onClick={handleOpenModal2}><SpanEstilizado>Cadastrar Motorista</SpanEstilizado></StyledButton>
         </ContainerEstilizado>
     )
 }

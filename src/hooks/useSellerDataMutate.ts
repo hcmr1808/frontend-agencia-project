@@ -5,9 +5,13 @@ import { EmployeeData } from "../interface/IEmployee";
 
 const API_URL = 'http://localhost:8080';
 
-const postData = async (data: SellerData): AxiosPromise<any> => {
-    const response = axios.post(API_URL + '/seller', data);
-    return response;
+const postData = async (data: EmployeeData): AxiosPromise<any> => {
+    try {
+        const response = await axios.post(API_URL + '/employee/add/seller', data);
+        return response.data;
+    } catch (error) {
+        throw new Error('Erro desconhecido ao processar a solicitação');
+    }
 }
 
 export function useSellerDataMutate(){

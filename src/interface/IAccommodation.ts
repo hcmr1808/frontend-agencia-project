@@ -1,6 +1,6 @@
 export interface AccommodationData{
 
-    id?:number,
+    id_accommodation:number,
     name:string,
     street:string,
     district:string,

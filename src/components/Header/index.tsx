@@ -18,25 +18,25 @@ export const Header = () => {
       </div>
       <ul className={menuOpen ? "open" : ""}>
         <li>
-          <NavLink to="/packages">Packages</NavLink>
+          <NavLink to="/packages">PACKAGES</NavLink>
         </li>
         <li>
-          <NavLink to="/accommodations">Accommodations</NavLink>
+          <NavLink to="/accommodations">ACCOMMODATIONS</NavLink>
         </li>
         <li>
-          <NavLink to="/employees">Employees</NavLink>
+          <NavLink to="/employees">EMPLOYEES</NavLink>
         </li>
         <li>
-          <NavLink to="/clients">Clients</NavLink>
+          <NavLink to="/clients">CLIENTS</NavLink>
         </li>
         <li>
-          <NavLink to="/tickets">Tickets</NavLink>
+          <NavLink to="/tickets">TICKETS</NavLink>
         </li>
         <li>
-          <NavLink to="/Admin">Admin</NavLink>
+          <NavLink to="/Admin">ADMIN</NavLink>
         </li>
         <li>
-          <NavLink to="/Consults">Consults</NavLink>
+          <NavLink to="/Consults">CONSULTS</NavLink>
         </li>
         
         

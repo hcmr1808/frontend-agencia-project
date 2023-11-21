@@ -9,6 +9,8 @@ const StyledCard = styled.div`
     border-radius: 8px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
 `
 const StyleImgCard = styled.img`
     border-radius: 8px 8px 0 0;

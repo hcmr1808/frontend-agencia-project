@@ -1,6 +1,6 @@
 export interface DriverData{
 
-    id?:number,
+    id_driver:number,
     name:string,
     cpf:string,
     birth_date:string,

@@ -1,11 +1,9 @@
 export interface BookingData{
 
     id_package:number,
-    title: string,
-    id_employee:number,
-    name:string,
+    id_seller:number,
     id_client:number,
-    id_ticket:number,
-    name_client:string
+    id_ticket:number
+
 
 }

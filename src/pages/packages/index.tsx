@@ -15,7 +15,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     
     <div className="container">
-    <h1>Pacotes de Viagem</h1>
+    <h1 className='h1'>Pacotes de Viagem</h1>
     <div className="card-grid">
       {data?.map(packageData => 
         <Card

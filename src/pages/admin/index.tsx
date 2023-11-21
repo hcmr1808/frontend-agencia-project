@@ -14,12 +14,12 @@ const StyledButton = styled.button`
     background-color: #D0D0D0;
     color: black;
     font-weight: bold;
-    bottom: 16px;
-    right: 24px;
     transition: all 0.1s linear 0.1s;
     border: 1px solid black;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 7px 0px;
     transform: scale(1);
+    z-index: 1;
+    
 `
 const StyledSpan = styled.span`
     cursor: pointer;

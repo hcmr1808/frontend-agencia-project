@@ -7,6 +7,7 @@ import { useClientData } from "../../hooks/useClientData";
 
 function Clients(){
     const {data} = useClientData();
+    
     return(
         <Container>
             <TituloClient>Cadastrar clientes</TituloClient>

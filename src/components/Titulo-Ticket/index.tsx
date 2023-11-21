@@ -11,15 +11,14 @@ interface Props {
 
 
 const SpanEstilizado = styled.span<Props>`
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-width: 25px;
-height: 25px;
+font-family: Arial, Helvetica, sans-serif;
+
 `
 
 const TituloEstilizado = styled.h2`
  color: var(--azul-escuro);
+ font-family: Arial, Helvetica, sans-serif;
+
 `
 
 const ContainerEstilizado = styled.div`

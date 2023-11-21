@@ -13,11 +13,11 @@ const StyledCell = styled(TableCell)(() => ({
         color: "var(--azul-escuro)",
         fontSize: 18,
         fontWeight: 700,
-        fontFamily: "var(--fonte-principal)"
+        
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 16,
-        fontFamily: "var(--fonte-principal)"
+        
     }
 }))
 

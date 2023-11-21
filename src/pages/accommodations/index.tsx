@@ -3,10 +3,18 @@ import '../packages/index.css'
 import { useAccommodationData } from '../../hooks/useAccommodationData'
 import { CardAccommodation } from '../../components/AccommodationCard'
 import { AccommodationModal } from '../../components/Accommodation-modal'
+import styled from 'styled-components'
+
+const StyledTitle = styled.h1`
+font-family: Arial, Helvetica, sans-serif;
+
+`
 
 function Accommodations(){
 const { data } = useAccommodationData();
 const [isModalOpen, setIsModalOpen] = useState(false);
+
+
 
   const handleOpenModal = () => {
     setIsModalOpen(prev => !prev)
@@ -15,10 +23,11 @@ const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     
     <div className="container">
-    <h1>Hospedagens</h1>
+    <StyledTitle>Hospedagens</StyledTitle>
     <div className="card-grid">
       {data?.map(accommodationData => 
         <CardAccommodation
+          id_accommodation={accommodationData.id_accommodation}
           name={accommodationData.name} 
           street={accommodationData.street} 
           district={accommodationData.district}

@@ -106,7 +106,7 @@ const Input = ({ label, value, updateValue }: InputProps) => {
 }
 
 export function AccommodationModal({ closeModal }: ModalProps){
-    const [id] = useState(0);
+    const [id_accommodation] = useState(0);
     const {mutate, isSuccess, isLoading } = useAccommodationDataMutate();
     const [name, setName] = useState("");
     const [street, setStreet] = useState("");
@@ -116,7 +116,7 @@ export function AccommodationModal({ closeModal }: ModalProps){
 
     const submit = () => {
         const accomodationData: AccommodationData = {
-            id,
+            id_accommodation,
             name,
             street,
             district,

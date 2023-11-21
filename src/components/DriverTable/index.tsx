@@ -49,8 +49,8 @@ function TabelaDriver({drivers} : {drivers ?: DriverData[] | null }) {
                                         <TableBody>
                                             {drivers?.map((linha) => {
                                                 return(
-                                                <TableRow key={linha.id}>
-                                                    <TableCell>{linha.id}</TableCell>
+                                                <TableRow key={linha.id_driver}>
+                                                    <TableCell>{linha.id_driver}</TableCell>
                                                     <TableCell>{linha.name}</TableCell>
                                                     <TableCell>{linha.cpf}</TableCell>
                                                     <TableCell component="th" scope="row">{linha.birth_date}</TableCell>

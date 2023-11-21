@@ -5,7 +5,7 @@ import { DriverData } from "../interface/IDriver";
 const API_URL = 'http://localhost:8080';
 
 const fetchData = async (): AxiosPromise<DriverData[]> => {
-    const response = axios.get(API_URL + '/driver');
+    const response = axios.get(API_URL + '/employee/drivers');
     return response;
 }
 

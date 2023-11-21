@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { SellerModal } from '../Seller-modal';
 import { DriverModal } from '../Driver-modal';
 import { ClientModal } from '../Client-modal';
+import { ClientEdit } from '../Client-edit';
 
 interface Props {
     imagem?: string,
@@ -11,11 +12,8 @@ interface Props {
 
 
 const SpanEstilizado = styled.span<Props>`
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-width: 25px;
-height: 25px;
+font-family: Arial, Helvetica, sans-serif;
+
 `
 
 const TituloEstilizado = styled.h2`
@@ -45,6 +43,7 @@ margin-left: 80px;
 function TituloClient({imagem, children} : Props) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+   
 
     const handleOpenModal = () => {
         setIsModalOpen(prev => !prev)
@@ -52,9 +51,10 @@ function TituloClient({imagem, children} : Props) {
 
     return (
         <ContainerEstilizado>
-                        <TituloEstilizado>{children}</TituloEstilizado>
-                        {isModalOpen && <ClientModal closeModal={handleOpenModal}/>}
-                        <StyledButton onClick={handleOpenModal}><span>Cadastrar Cliente</span></StyledButton>
+                <TituloEstilizado>{children}</TituloEstilizado>
+                {isModalOpen && <ClientModal closeModal={handleOpenModal}/>}
+                <StyledButton onClick={handleOpenModal}><SpanEstilizado>Cadastrar Cliente</SpanEstilizado></StyledButton>
+
         </ContainerEstilizado>
     )
 }

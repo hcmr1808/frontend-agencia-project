@@ -41,11 +41,11 @@ function TabelaBooking({bookings} : {bookings ?: BookingData[] | null }) {
                     <TableHead>
                         <StyledRow>
                                 <StyledCell>Id Pacote</StyledCell>
-                                <StyledCell>Nome Pacote</StyledCell>
-                                <StyledCell>Id Vendedor</StyledCell>
-                                <StyledCell>Nome Vendedor</StyledCell>                                    
+                                                
+                                                                 
                                 <StyledCell>Id Cliente</StyledCell>
-                                <StyledCell>Nome Cliente</StyledCell>
+                                <StyledCell>Id Vendedor</StyledCell>
+                            
                                 <StyledCell>Id Passagem</StyledCell>
                         </StyledRow>
                     </TableHead>
@@ -53,12 +53,10 @@ function TabelaBooking({bookings} : {bookings ?: BookingData[] | null }) {
                                             {bookings?.map((linha) => {
                                                 return(
                                                 <TableRow key={linha.id_package}>
-                                                    <TableCell>{linha.id_package}</TableCell>
-                                                    <TableCell>{linha.title}</TableCell>
-                                                    <TableCell>{linha.id_employee}</TableCell>
-                                                    <TableCell>{linha.name}</TableCell>
-                                                    <TableCell>{linha.id_client}</TableCell>
-                                                    <TableCell>{linha.name_client}</TableCell>
+                                                    <TableCell>{linha.id_package}</TableCell> 
+                                                    <TableCell>{linha.id_seller}</TableCell>   
+                                                    <TableCell>{linha.id_client}</TableCell>                                                
+                                                                                                                                                                                           
                                                     <TableCell>{linha.id_ticket}</TableCell>
 
                                                 </TableRow>

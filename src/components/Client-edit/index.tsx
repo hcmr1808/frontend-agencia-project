@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useSellerDataMutate } from '../../hooks/useSellerDataMutate';
-import { SellerData } from '../../interface/ISeller';
 import { FaTimes } from 'react-icons/fa';
-import { EmployeeData } from '../../interface/IEmployee';
-import { useDriverDataMutate } from '../../hooks/useDriverDataMutate';
-import { DriverData } from '../../interface/IDriver';
 import styled from 'styled-components';
+import { ClientData } from '../../interface/IClient';
+import { useClientUpdateData } from '../../hooks/useClientUpdateData';
 
 const StyledOverlay = styled.div`
     position: fixed;
@@ -14,21 +11,18 @@ const StyledOverlay = styled.div`
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     z-index: 999;
 `
 
 const StyledBody = styled.div`
-    background-color: white;
-    padding: 24px;
-    height: 80%;
+    background-color: lightgray;
+    padding: 8px;
+    height: 45%;
     width: 60%;
-    border-radius: 24px;
-
+    border-radius: 6px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -36,21 +30,20 @@ const StyledBody = styled.div`
 `
 
 const StyledTitle = styled.h2`
-font-size: 32px;
+font-size: 18px;
 `
 const StyledInputContainer = styled.form`
 width: calc(100% - 24px);
 `
 const StyledInput = styled.input`
-    padding: 12px;
+    padding: 2px;
     border: 2px solid #c6c5c5c5;
     color: rgba(0, 0, 0, 0.9);
-    font-size: 18px;
-    line-height: 24px;
-    border-radius: 12px;
+    font-size: 15px;
+    line-height: 4px;
+    border-radius: 0px;
     width: 100%;
-
-    margin-bottom: 12px;
+    margin-bottom: 2px;
 `
 
 const StyledLabel = styled.label`
@@ -63,10 +56,10 @@ const StyledLabel = styled.label`
 const StyledBtnSecondary = styled.button`
     position: relative;
     width: 20%;
-    margin-top: 20px;
+    margin-top: 1px;
     right: -300px;
-    height: 9%;
-    border: 2px;
+    height: 8%;
+    border: 1px;
     border-radius: 2px;
     background-color: #3a44f8;
     transform: scale(1);
@@ -76,16 +69,16 @@ const StyledBtnSecondary = styled.button`
 
 const StyledCloseButton = styled.button`
     position: absolute;
-    top: 70px; 
+    top: 170px; 
     left: 950px;
-    width: 40px; 
-    height: 40px; 
+    width: 30px; 
+    height: 30px; 
     border-radius: 10px;
-    background-color: red;
+    background-color: blue;
+    color:white;
     margin: 1%;
     border: 2px;
 `
-
 
 interface InputProps {
     label: string,
@@ -94,8 +87,12 @@ interface InputProps {
 }   
 
 interface ModalProps {
-    closeModal(): void
+    closeModal: (arg?: any) => void; 
+    cliente : ClientData;
 }
+
+
+
 
 const Input = ({ label, value, updateValue }: InputProps) => {
     return (
@@ -106,43 +103,50 @@ const Input = ({ label, value, updateValue }: InputProps) => {
     )
 }
 
-export function DriverModal({ closeModal }: ModalProps){
-    const [license_category, setLicenseCategory] = useState("");
-    const [id_employee] = useState(0);
-    const {mutate: driverMutate, isSuccess, isLoading } = useDriverDataMutate();
+export function ClientEdit({ closeModal, cliente }: ModalProps){
+    console.log('Dados do cliente em ClientEdit:', cliente);
+    const {mutate, isSuccess, isLoading } = useClientUpdateData();
+    const[id_client, setId_client] = useState(0);
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
-    const [birth_date, setBirth_date] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone_number, setPhone_number] = useState("");
 
-    const submitDriver = () => {
-        const driverData: EmployeeData = {
-            id_employee,
-            license_category : String(license_category),
-            name,
+    const submit = () => {
+        const clientData: ClientData = {
+            id_client,
             cpf,
-            birth_date
+            name,
+            email,
+            phone_number
         }
-        console.log('Submitting Driver Data:', driverData);
-        driverMutate(driverData)
+        console.log('Submitting Client Data:', clientData);
+        mutate(clientData)
     }
     
     useEffect(() => {
-        if(!isSuccess) return 
-        closeModal();
-    }, [isSuccess])
+        if (cliente) {
+            setId_client(cliente.id_client);
+            setCpf(cliente.cpf);
+            setEmail(cliente.email);
+            setName(cliente.name);
+            setPhone_number(cliente.phone_number);
+        }
+    }, [cliente]);
+
 
     return(
         <StyledOverlay>
             <StyledBody>
-                <StyledTitle>Cadastrar Motorista</StyledTitle>
+                <StyledTitle>Editar Client</StyledTitle>
                 <StyledInputContainer>
-                    <Input label="Name" value={name} updateValue={setName}/>
                     <Input label="Cpf" value={cpf} updateValue={setCpf}/>
-                    <Input label="Birth Date" value={birth_date} updateValue={setBirth_date}/>
-                    <Input label="License Category" value={license_category} updateValue={setLicenseCategory}/>
+                    <Input label="Email" value={email} updateValue={setEmail}/>
+                    <Input label="Name" value={name} updateValue={setName}/>
+                    <Input label="Phone Number" value={phone_number} updateValue={setPhone_number}/>
                 </StyledInputContainer>
-                <StyledBtnSecondary onClick={submitDriver} className="btn-secondary">
-                    {isLoading ? 'postando...' : 'postar'}
+                <StyledBtnSecondary onClick={submit} className="btn-secondary">
+                    {isLoading ? 'postando...' : 'editar'}
                 </StyledBtnSecondary>
                 <StyledCloseButton className="close-button" onClick={closeModal}>
                 <FaTimes />

@@ -107,6 +107,7 @@ const Input = ({ label, value, updateValue }: InputProps) => {
 
 export function ClientModal({ closeModal }: ModalProps){
     const {mutate, isSuccess, isLoading } = useClientDataMutate();
+    const [id_client, setId_client] = useState(0);
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
     const [email, setEmail] = useState("");
@@ -114,6 +115,7 @@ export function ClientModal({ closeModal }: ModalProps){
 
     const submit = () => {
         const clientData: ClientData = {
+            id_client,
             cpf,
             name,
             email,

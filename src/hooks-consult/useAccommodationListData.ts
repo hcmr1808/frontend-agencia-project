@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-interface Data {
-  count: number;
-  title: string;
+interface Data4 {
+  name: string;
 }
 
-const useCountPackageData = (packageName: string) => {
-  const [data, setData] = useState<Data | null>(null);
-  const apiUrl = `http://localhost:8080/consults/bookings/count/${packageName}`;
+const useAccommodationListData = (packageName: string) => {
+  const [data4, setData4] = useState<Data4[] | null>(null);
+  const apiUrl = `http://localhost:8080/consults/package_accommodation/${packageName}`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(apiUrl);
         const result = await response.json();
-        setData(result);
+        setData4(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -23,7 +22,7 @@ const useCountPackageData = (packageName: string) => {
     fetchData();
   }, [apiUrl]);
 
-  return { data };
+  return { data4 };
 };
 
-export default useCountPackageData;
+export default useAccommodationListData;

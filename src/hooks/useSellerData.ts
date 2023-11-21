@@ -5,7 +5,7 @@ import { SellerData } from "../interface/ISeller";
 const API_URL = 'http://localhost:8080';
 
 const fetchData = async (): AxiosPromise<SellerData[]> => {
-    const response = axios.get(API_URL + '/seller');
+    const response = axios.get(API_URL + '/employee/sellers');
     return response;
 }
 

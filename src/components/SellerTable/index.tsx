@@ -48,8 +48,8 @@ function TabelaSeller({sellers} : {sellers ?: SellerData[] | null }) {
                                         <TableBody>
                                             {sellers?.map((linha) => {
                                                 return(
-                                                <TableRow key={linha.id_employee}>
-                                                    <TableCell>{linha.id_employee}</TableCell>
+                                                <TableRow key={linha.id_seller}>
+                                                    <TableCell>{linha.id_seller}</TableCell>
                                                     <TableCell>{linha.name}</TableCell>
                                                     <TableCell>{linha.cpf}</TableCell>
                                                     <TableCell component="th" scope="row">{linha.birth_date}</TableCell>
