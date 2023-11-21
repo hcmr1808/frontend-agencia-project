@@ -1,12 +1,13 @@
 import useCountPackageData from "../../hooks-consult/useCountPackageData";
 import Container from "../../components/Container"
 import TituloTicket from "../../components/Titulo-Ticket";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css'
 import useGuidePackageData from "../../hooks-consult/useGuidePackageData";
 import useTicketPackageData from "../../hooks-consult/useTicketPackageData";
 import useAccommodationListData from "../../hooks-consult/useAccommodationListData";
 import useCountSellsData from "../../hooks-consult/useCountSellsData";
+import useMaxPackageSellData from "../../hooks-consult/useMaxPackageSellData";
 
 interface InputProps {
     label: string,
@@ -35,6 +36,8 @@ function Consults(){
     const {data4} = useAccommodationListData(searchTerm4);
     const {data5} = useCountSellsData(searchTerm5);
 
+    const { data6 } = useMaxPackageSellData();
+   
     return(
         <Container>
             <TituloTicket>Consultas de reservas de pacotes</TituloTicket>
@@ -59,19 +62,6 @@ function Consults(){
         {data2 ? (
           <div>
             <p className="p">ROTEIRO: {data2.description}</p>
-          </div>
-        ) : (
-          <p className="p">Consulta...</p>
-        )}
-      </div>
-      <TituloTicket>Consultas de data de viagens</TituloTicket>
-      <div className="body">
-        <label>
-        <Input label="" value={searchTerm3} updateValue={setSearchTerm3}/>
-      </label>
-        {data3 ? (
-          <div>
-            <p className="p">DATA: {data3.date}</p>
           </div>
         ) : (
           <p className="p">Consulta...</p>
@@ -104,6 +94,17 @@ function Consults(){
           <div>
             <p className="p">CARGA HORÁRIA: {data5.workload}</p>
             <p className="p">QUANTIDADE DE VENDAS: {data5.count_sells}</p>
+          </div>
+        ) : (
+          <p className="p">Consulta...</p>
+        )}
+      </div>
+      <TituloTicket>Maxima venda de pacote</TituloTicket>
+      <div className="body">
+        {data6 ? (
+          <div>
+            <p className="p">Id pacote: {data6.id_package}</p>
+            <p className="p">MAIOR VENDA: {data6.max_reservas}</p>
           </div>
         ) : (
           <p className="p">Consulta...</p>
